@@ -1,0 +1,24 @@
+on:
+  push:
+  schedule:
+    - cron: "0 2 * * *"
+
+name: Test on Ubuntu 24.04
+
+jobs:
+  R-CMD-check:
+    runs-on: ubuntu-24.04${{matrix.arch=='arm64' && '-arm' || ''}}
+
+    name: Ubuntu 24.04 ${{ matrix.arch }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        arch: ['x86_64', 'arm64' ]
+
+    steps:
+      - name: checkout
+        uses: actions/checkout@v6
+
+      - name: build
+        run: docker build . --no-cache --progress=plain
