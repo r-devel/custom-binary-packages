@@ -1,6 +1,6 @@
-FROM ghcr.io/r-devel/ubuntu-24.04:latest
+FROM ghcr.io/r-devel/ubuntu-26.04:latest
 
-RUN echo "R_PLATFORM_PKGTYPE=linux.binary.noble-$(arch)" >> "$HOME/.Renviron"
+RUN echo "R_PLATFORM_PKGTYPE=linux.binary.$(lsb_release -sc)-$(arch)" >> "$HOME/.Renviron"
 
 # Should reflect envvar set above
 RUN R -e "print(.Platform$pkgType)"

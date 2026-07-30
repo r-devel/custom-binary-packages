@@ -4,13 +4,13 @@ on:
     - cron: "0 2 * * *"
   workflow_dispatch:
 
-name: Test on Ubuntu 24.04
+name: Test on Ubuntu 26.04
 
 jobs:
   R-CMD-check:
-    runs-on: ubuntu-24.04${{matrix.arch=='arm64' && '-arm' || ''}}
+    runs-on: ubuntu-26.04${{matrix.arch=='arm64' && '-arm' || ''}}
 
-    name: Ubuntu 24.04 ${{ matrix.arch }}
+    name: Ubuntu 26.04 ${{ matrix.arch }}
 
     strategy:
       fail-fast: false

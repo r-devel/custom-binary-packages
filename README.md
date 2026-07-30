@@ -12,26 +12,26 @@ The format of this variable must be `{os}.binary.{flavor}` for example if we use
 
 
 ```env
-R_PLATFORM_PKGTYPE=linux.binary.noble-x86_64
+R_PLATFORM_PKGTYPE=linux.binary.resolute-x86_64
 ```
 
 Then the server binaries need to be hosted on:
 
 ```
-https://{server}/bin/linux/noble-x86_64/contrib/{r-version}/PACKAGES
+https://{server}/bin/linux/resolute-x86_64/contrib/{r-version}/PACKAGES
 ```
 
-Where `linux` and `noble-x86_64` are taken from `R_PLATFORM_PKGTYPE` and `{r-version}` is the usual `major.minor` R version (without the patch part) e.g. `4.6`.
+Where `linux` and `resolute-x86_64` are taken from `R_PLATFORM_PKGTYPE` and `{r-version}` is the usual `major.minor` R version (without the patch part) e.g. `4.6`.
 
 R will show a warning and fall back on building packages from source as usual for packages or repositories where the requested binaries are not available.
 
 
 ## Testing with R-universe
 
-Currently R-universe already hosts such binaries for Ubuntu "noble" 24.04 for both arm64 and x86_64:
+Currently R-universe already hosts such binaries for Ubuntu "resolute" 26.04 for both arm64 and x86_64:
 
- - https://cran.r-universe.dev/bin/linux/noble-x86_64/contrib/4.6/PACKAGES.gz
- - https://cran.r-universe.dev/bin/linux/noble-arm64/contrib/4.6/PACKAGES.gz
+ - https://cran.r-universe.dev/bin/linux/resolute-x86_64/contrib/4.6/PACKAGES.gz
+ - https://cran.r-universe.dev/bin/linux/resolute-arm64/contrib/4.6/PACKAGES.gz
 
 We can use the attached [Dockerfile](Dockerfile) to test that this works as intended by installing the tidyverse and its dependencies. The output logs show that installation is quick and no packages get built from source.
 
